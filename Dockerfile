@@ -27,10 +27,13 @@ ENV PATH="$PATH":"${MAVEN_HOME}/apache-maven-${MAVEN_VERSION}/bin"
 
 ARG TARGETARCH
 
-WORKDIR /install
+WORKDIR /scripts
 COPY scripts ./
 RUN bash "./install-${TARGETARCH}.sh"
-RUN rm -rf /install
+RUN chmod +x /scripts/entrypoint.sh
 
-ENV DEFAULT_AWS_REGION=eu-west-1
+ENV AWS_DEFAULT_REGION=eu-west-1
 WORKDIR /workspace
+
+ENTRYPOINT ["/scripts/entrypoint.sh"]
+CMD ["bash"]
