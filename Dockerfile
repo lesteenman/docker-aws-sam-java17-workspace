@@ -7,7 +7,7 @@ ARG AWS_SAM_VERSION=1.99.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
-    apt-get install -y build-essential vim unzip curl openjdk-17-jdk software-properties-common groff less && \
+    apt-get install -y build-essential vim unzip curl openjdk-17-jdk software-properties-common groff less git && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y python3.8 python3-pip && \
